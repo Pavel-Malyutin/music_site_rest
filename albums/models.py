@@ -124,12 +124,12 @@ class Rating(models.Model):
         verbose_name_plural = 'Рейтинги'
 
 
-class Review(models.Model):
+class Reviews(models.Model):
     email = models.EmailField()
     name = models.CharField('Имя', max_length=100)
     text = models.TextField('Сообщение', max_length=5000)
     parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True)
-    album = models.ForeignKey(Album, verbose_name='Альбом', on_delete=models.CASCADE)
+    album = models.ForeignKey(Album, verbose_name='Альбом', on_delete=models.CASCADE, related_name='reviews')
 
     def __str__(self):
         return f'{self.name} - {self.album}'

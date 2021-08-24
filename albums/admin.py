@@ -22,7 +22,7 @@ class BandAdmin(admin.ModelAdmin):
 
 
 class ReviewInLine(admin.TabularInline):
-    model = Review
+    model = Reviews
     extra = 1
     readonly_fields = ('name', 'email',)
 
@@ -50,7 +50,7 @@ class AlbumAdmin(admin.ModelAdmin):
     list_editable = ('draft',)
 
 
-@admin.register(Review)
+@admin.register(Reviews)
 class ReviewAdmin(admin.ModelAdmin):
     list_display = ('name', 'email', 'parent', 'album', 'id')
     readonly_fields = ('name', 'email')
