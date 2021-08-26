@@ -128,7 +128,9 @@ class Reviews(models.Model):
     email = models.EmailField()
     name = models.CharField('Имя', max_length=100)
     text = models.TextField('Сообщение', max_length=5000)
-    parent = models.ForeignKey('self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True)
+    parent = models.ForeignKey(
+        'self', verbose_name='Родитель', on_delete=models.SET_NULL, blank=True, null=True, related_name='children'
+    )
     album = models.ForeignKey(Album, verbose_name='Альбом', on_delete=models.CASCADE, related_name='reviews')
 
     def __str__(self):
